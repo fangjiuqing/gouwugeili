@@ -1,0 +1,10 @@
+<?php
+namespace app\shop\controller;
+
+class Customs
+{
+    public function index()
+    {
+        return '{"data":{"list":[{"id":"460000199905203395","type":"activity","title":"活动","imglist":[{"id":"230000200008065642","title":"vsqetq","src":"https://gw.alicdn.com/tfscom/i1/TB2wFkzGamWBuNjy1XaXXXCbXXa_!!0-dgshop.jpg"},{"id":"710000197704281648","title":"rktfy","src":"https://gw.alicdn.com/tfscom/i1/TB2wFkzGamWBuNjy1XaXXXCbXXa_!!0-dgshop.jpg"},{"id":"34000019930918352X","title":"yfaomldh","src":"https://gw.alicdn.com/tfscom/i1/TB2wFkzGamWBuNjy1XaXXXCbXXa_!!0-dgshop.jpg"},{"id":"110000199410227432","title":"ckspoyaefz","src":"https://gw.alicdn.com/tfscom/i1/TB2wFkzGamWBuNjy1XaXXXCbXXa_!!0-dgshop.jpg"},{"id":"450000198207164185","title":"hyoingtll","src":"https://gw.alicdn.com/tfscom/i1/TB2wFkzGamWBuNjy1XaXXXCbXXa_!!0-dgshop.jpg"}]},{"id":"71000020170719635X","type":"recommend","title":"推荐","imglist":[{"id":"120000200208102035","title":"lrle","desc":"口并果适国。","src":"https://m.360buyimg.com/mobilecms/s130x130_jfs/t21196/6/1392860476/62867/56c7bae8/5b27b02aNe15aafc3.png!q70.jpg.dpg"},{"id":"530000199704047515","title":"bmuu","desc":"高报市口音。","src":"https://m.360buyimg.com/mobilecms/s130x130_jfs/t22666/293/257815171/29274/6b5605b1/5b2a5295N5a81ad96.jpg!q70.jpg.dpg"},{"id":"990000201001196544","title":"vvi","desc":"约行提万。","src":"https://m.360buyimg.com/mobilecms/s130x130_jfs/t19918/10/2637292122/17090/1da36d9f/5b4c67c6N70c2ce3d.jpg!q70.jpg.dpg"},{"id":"500000197103201308","title":"jla","desc":"色四三太。","src":"https://m.360buyimg.com/mobilecms/s130x130_jfs/t19918/10/2637292122/17090/1da36d9f/5b4c67c6N70c2ce3d.jpg!q70.jpg.dpg"},{"id":"370000201012155697","title":"xznegh","desc":"又接阶。","src":"https://m.360buyimg.com/mobilecms/s130x130_jfs/t19918/10/2637292122/17090/1da36d9f/5b4c67c6N70c2ce3d.jpg!q70.jpg.dpg"},{"id":"330000200411083924","title":"yrug","desc":"特格开。","src":"https://m.360buyimg.com/mobilecms/s130x130_jfs/t19918/10/2637292122/17090/1da36d9f/5b4c67c6N70c2ce3d.jpg!q70.jpg.dpg"}]}]},"code":200,"message":"ok"}';
+    }
+}
