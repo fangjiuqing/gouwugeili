@@ -1,7 +1,6 @@
 <html class=" js no-mobile desktop no-ie chrome chrome75 root-section gradient rgba opacity textshadow multiplebgs boxshadow borderimage borderradius cssreflections csstransforms csstransitions no-touch retina fontface domloaded w-1411 gt-240 gt-320 gt-480 gt-640 gt-768 gt-800 gt-1024 gt-1280 lt-1440 lt-1680 lt-1920 no-portrait landscape" id="index-page">
 
 <head>
-    <script src="//hm.baidu.com/hm.js?545c20cb01a15219bfeb0d1f103f99c1"></script>
     <meta charset="utf-8">
     <title>给利网超级返：淘宝商城、天猫旗舰店等大牌云集，折扣给利最高达81%,每日10点上新！购物省钱还给利，真是太给力了</title>
     <meta name="flpn" content="superapp_home_index_index">
@@ -11,7 +10,9 @@
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="apple-touch-icon" href="http://www.gouwugeili.com/apple-touch-icon.png">
     <link rel="stylesheet" href="static/super-index-v2-css.css?3429fcc824">
-    <script src="common/libs/headjs/head.min.js"></script>
+    <script src="static/common/libs/jquery/jquery.min.js"></script>
+    <script src="static/common/libs/jquery.lazyload.js"></script>
+    <script src="static/common/libs/headjs/head.min.js"></script>
     <script type="text/javascript">
     var fgv = {
         fanlitrack: {
@@ -888,11 +889,16 @@
 
                             <div id="backtop" style="left: 1187.5px; display: block;"><a href="javascript:void(0);" class="side-feedback" target="_blank" style="display:none;"><i></i>意见反馈</a><a id="btn-backtop" href="javascript:void(0);" class="ht">返回顶部</a></div>
 
-                            <script src="common/libs/jquery/jquery.min.js"></script>
                             <script src="static/super-index-v2-js.js?789e30b3be"></script>
 
                             <script type="text/javascript">
-                            (function() { for (var i = 0, len = fgv.pageJsLoadedCallbackArr.length; i < len; ++i) { fgv.pageJsLoadedCallbackArr[i](); } }());
+                            (function() {
+                                for (var i = 0, len = fgv.pageJsLoadedCallbackArr.length; i < len; ++i) {
+                                    fgv.pageJsLoadedCallbackArr[i]();
+                                }
+
+                                $("img").lazyload({effect: "fadeIn"});
+                            }());
                             </script>
 
     </body>
