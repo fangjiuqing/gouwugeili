@@ -9,7 +9,7 @@
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 
-namespace think\session\driver;
+namespace think\facade\Session\driver;
 
 use SessionHandlerInterface;
 use think\Exception;

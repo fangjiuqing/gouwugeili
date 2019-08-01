@@ -79,7 +79,7 @@ trait Jump
         if (is_null($url)) {
             $url = $this->app['request']->isAjax() ? '' : 'javascript:history.back(-1);';
         } elseif ('' !== $url) {
-            $url = (strpos($url, '://') || 0 === strpos($url, '/')) ? $url : $this->app['url']->build($url);
+            $url = (strpos($url, '://') || 0 === strpos($url, '/')) ? $url : Build::url($url);
         }
 
         $result = [

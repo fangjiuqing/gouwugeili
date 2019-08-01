@@ -14,11 +14,11 @@ namespace think\facade;
 use think\Facade;
 
 /**
- * @see \think\Cache
- * @mixin \think\Cache
- * @method \think\cache\Driver connect(array $options = [], mixed $name = false) static 连接缓存
- * @method \think\cache\Driver init(array $options = []) static 初始化缓存
- * @method \think\cache\Driver store(string $name = '') static 切换缓存类型
+ * @see \think\facade\Cache
+ * @mixin \think\facade\Cache
+ * @method \think\facade\Cache\Driver connect(array $options = [], mixed $name = false) static 连接缓存
+ * @method \think\facade\Cache\Driver init(array $options = []) static 初始化缓存
+ * @method \think\facade\Cache\Driver store(string $name = '') static 切换缓存类型
  * @method bool has(string $name) static 判断缓存是否存在
  * @method mixed get(string $name, mixed $default = false) static 读取缓存
  * @method mixed pull(string $name) static 读取缓存并删除

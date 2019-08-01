@@ -9,9 +9,9 @@
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 
-namespace think\cache\driver;
+namespace think\Cache\driver;
 
-use think\cache\Driver;
+use think\Cache\Driver;
 use think\Container;
 
 /**

@@ -13,12 +13,14 @@ return [
     // 数据库类型
     'type'            => 'mysql',
     // 服务器地址
+    //'hostname'        => '111.231.106.198',
     'hostname'        => '127.0.0.1',
     // 数据库名
     'database'        => 'gouwugeili',
     // 用户名
     'username'        => 'root',
     // 密码
+    //'password'        => 'Hysj12)9-JiKmmy',
     'password'        => '',
     // 端口
     'hostport'        => '',

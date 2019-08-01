@@ -11,7 +11,7 @@
 
 namespace think;
 
-use think\cache\Driver;
+use think\Cache\Driver;
 
 /**
  * Class Cache
@@ -19,7 +19,7 @@ use think\cache\Driver;
  * @package think
  *
  * @mixin Driver
- * @mixin \think\cache\driver\File
+ * @mixin \think\facade\Cache\driver\File
  */
 class Cache
 {

@@ -9,9 +9,9 @@
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 
-namespace think\cache\driver;
+namespace think\facade\Cache\driver;
 
-use think\cache\Driver;
+use think\facade\Cache\Driver;
 
 class Memcache extends Driver
 {
