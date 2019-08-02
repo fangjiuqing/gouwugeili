@@ -28,8 +28,6 @@ class Test extends Command
 
     protected function execute(Input $input, Output $output)
     {
-        $this->testLoadDynamicPage();
-        die('end');
         $t1 = microtime(true);
         $m1 = memory_get_usage(true);
         echo sprintf('memory start used at:%.2fMb' , round( $m1 / 1024 / 1024 ,2 ) ) . PHP_EOL;
@@ -45,6 +43,9 @@ class Test extends Command
         $i = 0;
         $total = $model->count();
         echo '<pre>';
+
+        ## 获取所有分类
+        $cats = Category::field('cat_id,cat_name')->select();
         $update = [];
         while ( $i < ($total) ) {
             foreach ( $this->getOneData($model , $i) as $v ) {
@@ -52,54 +53,27 @@ class Test extends Command
                     'goods_id'    =>    $v->goods_id
                 ];
                 ## 到手价修改
-                if ( empty($v->goods_final_price) ) {
-                    preg_match('/满(\d+)元减(\d+)元/' , $v->goods_ticket_value , $match);
+                // if ( empty($v->goods_final_price) ) {
+                //     preg_match('/满(\d+)元减(\d+)元/' , $v->goods_ticket_value , $match);
 
-                    if ( isset($match[1]) && isset($match[2]) ) {
-                        if ( $v->goods_origin_price >= $match[1] ) {
-                            $final_price    =    $v->goods_origin_price - $match[2];
+                //     if ( isset($match[1]) && isset($match[2]) ) {
+                //         if ( $v->goods_origin_price >= $match[1] ) {
+                //             $final_price    =    $v->goods_origin_price - $match[2];
 
-                            $update[$i]['goods_final_price']  = $final_price;
-                        }
-                    }
+                //             $update[$i]['goods_final_price']  = $final_price;
+                //         }
+                //     }
 
-                    preg_match('/(\d+)元无条件/' , $v->goods_ticket_value , $match);
-                    if ( isset($match[1]) ) {
-                        if ( $v->goods_origin_price >= $match[1] ) {
-                            $final_price    =    $v->goods_origin_price - $match[1];
+                //     preg_match('/(\d+)元无条件/' , $v->goods_ticket_value , $match);
+                //     if ( isset($match[1]) ) {
+                //         if ( $v->goods_origin_price >= $match[1] ) {
+                //             $final_price    =    $v->goods_origin_price - $match[1];
 
-                            $update[$i]['goods_final_price']  = $final_price;
-                        }
-                    }
-                }
+                //             $update[$i]['goods_final_price']  = $final_price;
+                //         }
+                //     }
+                // }
 
-                ## 获取商品详情
-                # 1轮播图
-                # 2详情介绍
-                $banners = $details = [];
-                echo $v->goods_origin_url,PHP_EOL;
-                $html = file_get_contents($v->goods_origin_url);
-                $dom = new \DOMDocument();
-                //从一个字符串加载HTML
-                @$dom->loadHTML($html);
-                //使该HTML规范化
-                $dom->normalize();
-                //用DOMXpath加载DOM，用于查询
-                $xpath = new \DOMXPath($dom);
-
-                #获取所轮播图小图地址
-                $thumb = $xpath->query('//*[@id="J_UlThumb"]/li/a/img/@src');
-                for ($i = 0; $i < $thumb->length; $i++) {
-                    $img = $thumb->item($i);
-                    $src = $img->nodeValue;
-                    if ( preg_match('/(.*)_60x60q90.jpg/' , $src , $match) ) {
-                        echo $match[1],PHP_EOL;
-                        // $album_model->save([
-                        //     'goods_id'       =>   $v->goods_id,
-                        //     'album_img_url'  =>   $match[1]
-                        // ]);
-                    }
-                }
 
                 # 获取评论数
                 //$comment = $xpath->query('//*[@id="J_ItemRates"]/div/span[2]');
@@ -112,20 +86,29 @@ class Test extends Command
 
 
                 ## 分类归集
-                //$full_cat = explode('/',$v->goods_full_cat);
-                //$cat_id   = $this->getCatId($full_cat);
+                $cat_id = 0;
+                foreach ( $cats as $cat ) {
+                    if ( preg_match('/' . $cat['cat_name'] . '/' , $v->goods_full_cat . $v->goods_name ) ) {
+                        $cat_id = $cat['cat_id'];
+                        break;
+                    }
+                }
+
+                $update[$i]['goods_cat']  = $cat_id;
+
+                echo $v->goods_name ,' full cat :' , $v->goods_full_cat, ' cat:', $cat_id , PHP_EOL;
             }
 
             ## 间隔100次更新一下数据库
-            if ( ( ($i +1) % 100 ) == 0 ) {
-                echo '批量更新，当前索引数：' . $i . PHP_EOL;
-                if ( $model->saveAll($update) ) {
-                    echo '更新成功！' , PHP_EOL;
-                }else{
-                    echo '更新失败' . PHP_EOL;
-                }
-                $update = [];
-            }
+            // if ( ( ($i +1) % 100 ) == 0 ) {
+            //     echo '批量更新，当前索引数：' . $i . PHP_EOL;
+            //     if ( $model->saveAll($update) ) {
+            //         echo '更新成功！' , PHP_EOL;
+            //     }else{
+            //         echo '更新失败' . PHP_EOL;
+            //     }
+            //     $update = [];
+            // }
 
             $i++;
         }

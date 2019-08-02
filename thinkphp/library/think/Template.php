@@ -59,6 +59,9 @@ class Template
         'tpl_replace_string' => [],
         'tpl_var_identify'   => 'array', // .语法变量识别，array|object|'', 为空时自动识别
         'default_filter'     => 'htmlentities', // 默认过滤方法 用于普通标签输出
+        'tpl_replace_string'  =>  [
+            '__STATIC__'=>'http://localhost/shop/public/static/',
+        ]
     ];
 
     /**
